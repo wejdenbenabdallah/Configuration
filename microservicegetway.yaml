@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:9993/eureka
+       defaultZone: http://localhost:9993/eureka
 spring:
  cloud:
    gateway:
@@ -10,8 +10,16 @@ spring:
         uri: lb://microservice-user
         predicates:
          - path= /utilisateur/**
-         filter:
+         filters:
           - RewritePath=/utilisateur/(?<path.*), /$\{path}
+
+       - id:microservice-projet
+        uri: lb://microservice-projet
+        predicates:
+           - path= /projet/**
+         filters:
+          - RewritePath=/projet/(?<path.*), /$\{path}
+          
          
         
    
