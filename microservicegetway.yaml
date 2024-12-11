@@ -10,13 +10,13 @@ spring:
         - id: microservice-user
           uri: lb://microservice-user
           predicates:
-            - path=/utilisateur/**
+            - Path=/utilisateur/**
           filters:
             - RewritePath=/utilisateur/(?<path>.*), /${path}
 
         - id: microservice-projet
           uri: lb://microservice-projet
           predicates:
-            - path=/projet/**
+            - Path=/projet/**
           filters:
             - RewritePath=/projet/(?<path>.*), /${path}
